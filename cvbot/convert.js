@@ -1,30 +1,24 @@
-7 packages are looking for funding
-  run `npm fund` for details
-PS C:\Windows\system32> cd C:\cvbot-pdf
->> npm init -y
->> npm install puppeteer
-Wrote to C:\cvbot-pdf\package.json:
+const puppeteer = require('puppeteer');
 
-{
-  "name": "cvbot-pdf",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
-}
+const htmlPath = process.argv[2];
+const pdfPath = process.argv[3];
 
-
-
-added 99 packages, and audited 100 packages in 10s
-
-7 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-PS C:\cvbot-pdf>
+(async () => {
+    const browser = await puppeteer.launch({
+        headless: 'new',
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-web-security'
+        ]
+    });
+    const page = await browser.newPage();
+    await page.goto('file://' + htmlPath, { waitUntil: 'networkidle0', timeout: 60000 });
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    await page.pdf({
+        path: pdfPath,
+        format: 'A4',
+        printBackground: true
+    });
+    await browser.close();
+})();
