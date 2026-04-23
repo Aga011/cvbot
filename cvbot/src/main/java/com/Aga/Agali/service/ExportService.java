@@ -29,7 +29,7 @@ public class ExportService {
         File pdfFile = File.createTempFile("cv_", ".pdf");
 
         ProcessBuilder pb = new ProcessBuilder(
-                "C:\\Program Files\\nodejs\\node.exe",
+                "node",
                 puppeteerScriptPath,
                 htmlFile.getAbsolutePath(),
                 pdfFile.getAbsolutePath()
@@ -74,7 +74,6 @@ public class ExportService {
     }
 
     private String fillTemplate(String html, CvData cvData) {
-        // Əsas məlumatlar
         html = html.replace("${fullName}", safe(cvData.getFullName()));
         html = html.replace("${firstNameHtml}", buildFirstName(cvData.getFullName()));
         html = html.replace("${profession}", safe(cvData.getProfession()));
@@ -83,38 +82,30 @@ public class ExportService {
         html = html.replace("${address}", safe(cvData.getAddress()));
         html = html.replace("${about}", safe(cvData.getAbout()));
 
-        // Foto
         html = html.replace("${photoHtml}", buildPhotoHtml(cvData.getPhoto()));
 
-        // Linklər
         html = html.replace("${githubHtml}", buildContactItem("🔗 GitHub: ", cvData.getGithubLink()));
         html = html.replace("${linkedinHtml}", buildContactItem("💼 LinkedIn: ", cvData.getLinkedinLink()));
         html = html.replace("${githubLineHtml}", buildSeparatorLink(cvData.getGithubLink()));
         html = html.replace("${linkedinLineHtml}", buildSeparatorLink(cvData.getLinkedinLink()));
 
-        // Sidebar linklər (template1 üçün)
         html = html.replace("${githubSidebarHtml}", buildSidebarLink("GitHub", cvData.getGithubLink()));
         html = html.replace("${linkedinSidebarHtml}", buildSidebarLink("LinkedIn", cvData.getLinkedinLink()));
 
-        // Bacarıqlar
         html = html.replace("${skillsHtml}", buildSkillsHtml(cvData.getSkills(), cvData.getTemplate()));
         html = html.replace("${languagesHtml}", buildLanguagesHtml(cvData.getLanguages()));
 
-        // İş təcrübəsi
         html = html.replace("${experienceHtml}", buildExperienceHtml(cvData.getExperience(), cvData.getTemplate()));
 
-        // Təhsil
+
         html = html.replace("${educationHtml}", buildEducationHtml(cvData.getEducation(), cvData.getTemplate()));
 
-        // Layihələr
         html = html.replace("${projectsHtml}", buildProjectsHtml(cvData.getProjects(), cvData.getTemplate()));
         html = html.replace("${projectsSectionHtml}", buildProjectsSectionHtml(cvData.getProjects()));
 
-        // Sertifikatlar
         html = html.replace("${certificationsHtml}", buildCertificationsHtml(cvData.getCertifications(), cvData.getTemplate()));
         html = html.replace("${certificationsSectionHtml}", buildCertificationsSectionHtml(cvData.getCertifications()));
 
-        // Qeyri-IT
         html = html.replace("${computerSkillsHtml}", buildComputerSkillsHtml(cvData.getComputerSkills(), cvData.getTemplate()));
         html = html.replace("${personalSkillsHtml}", buildPersonalSkillsHtml(cvData.getPersonalSkills(), cvData.getTemplate()));
         html = html.replace("${computerSkillsSectionHtml}", buildSectionHtml("Komputer Bilikləri", cvData.getComputerSkills()));
