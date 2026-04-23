@@ -33,6 +33,5 @@ build/
 .vscode/
 
 # Sensitive files
-application.properties
 application-local.properties
 .env
