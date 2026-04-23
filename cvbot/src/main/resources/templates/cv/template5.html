@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>CV</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: white; }
+
+        .container { width: 900px; margin: auto; background: #f7f7f7; padding: 30px; }
+
+        .header h1 { margin: 0; font-size: 32px; letter-spacing: 2px; }
+        .header h3 { margin: 5px 0 15px; font-weight: normal; color: #555; }
+
+        .line { height: 2px; background: #333; margin-bottom: 20px; }
+
+        .main { display: flex; }
+
+        .left { width: 35%; padding-right: 20px; }
+        .left h2 {
+            font-size: 13px; letter-spacing: 2px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px; margin-top: 20px; margin-bottom: 8px;
+        }
+        .left h2:first-child { margin-top: 0; }
+        .left p, .left li { font-size: 13px; line-height: 1.6; }
+        ul { padding-left: 18px; }
+
+        .right { width: 65%; position: relative; padding-left: 40px; }
+
+        .timeline {
+            position: absolute; left: 10px; top: 0; bottom: 0;
+            width: 2px; background: #333;
+        }
+        .dot {
+            width: 10px; height: 10px;
+            background: #fff; border: 2px solid #333;
+            border-radius: 50%; position: absolute; left: 4px;
+        }
+        .section { margin-bottom: 25px; position: relative; }
+        .section h2 {
+            font-size: 14px; letter-spacing: 2px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px; margin-bottom: 10px;
+        }
+
+        .exp { margin-bottom: 12px; }
+        .exp-header { font-size: 14px; font-weight: bold; }
+        .exp-date { font-size: 12px; color: gray; margin: 3px 0; }
+        .exp-duties { font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
+
+        .edu-item { margin-bottom: 10px; }
+        .edu-degree { font-size: 13px; font-weight: bold; }
+        .edu-university { font-size: 12px; color: #444; }
+        .edu-faculty { font-size: 12px; font-style: italic; color: #666; }
+        .edu-date { font-size: 12px; color: gray; }
+
+        .skill-item { font-size: 13px; margin: 4px 0; }
+        .lang-item { font-size: 13px; margin: 4px 0; }
+        .cert-item { font-size: 13px; margin: 4px 0; }
+
+        .project-item { margin-bottom: 10px; }
+        .project-name { font-size: 13px; font-weight: bold; }
+        .project-desc { font-size: 12px; color: #444; }
+
+        .contact-item { font-size: 13px; margin: 4px 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>${fullName}</h1>
+        <h3>${profession}</h3>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="main">
+        <div class="left">
+            <h2>ƏLAQƏ</h2>
+            <p class="contact-item">📞 ${phone}</p>
+            <p class="contact-item">✉ ${email}</p>
+            <p class="contact-item">📍 ${address}</p>
+            ${githubHtml}
+            ${linkedinHtml}
+
+            <h2>BACARIQLAR</h2>
+            ${skillsHtml}
+
+            <h2>DİL BİLİKLƏRİ</h2>
+            ${languagesHtml}
+
+            ${computerSkillsHtml}
+            ${personalSkillsHtml}
+            ${certificationsHtml}
+        </div>
+
+        <div class="right">
+            <div class="timeline"></div>
+
+            <div class="section">
+                <div class="dot" style="top:10px;"></div>
+                <h2>HAQQIMDA</h2>
+                <p style="font-size:13px; line-height:1.6;">${about}</p>
+            </div>
+
+            <div class="section">
+                <div class="dot" style="top:10px;"></div>
+                <h2>İŞ TƏCRÜBƏSİ</h2>
+                ${experienceHtml}
+            </div>
+
+            <div class="section">
+                <div class="dot" style="top:10px;"></div>
+                <h2>TƏHSİL</h2>
+                ${educationHtml}
+            </div>
+
+            ${projectsHtml}
+        </div>
+    </div>
+</div>
+</body>
+</html>
