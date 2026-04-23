@@ -89,31 +89,31 @@ public class BotService {
             case "template_1" -> {
                 CvData cv1 = CvData.builder().user(user).template(CvTemplate.TEMPLATE_1).build();
                 cvDataRepository.save(cv1);
-                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Ağalı Ağa)");
+                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Jale Musayeva)");
                 userService.updateState(user, UserState.COLLECTING_FULL_NAME);
             }
             case "template_2" -> {
                 CvData cv2 = CvData.builder().user(user).template(CvTemplate.TEMPLATE_2).build();
                 cvDataRepository.save(cv2);
-                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Ağalı Ağa)");
+                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Jale Musayeva)");
                 userService.updateState(user, UserState.COLLECTING_FULL_NAME);
             }
             case "template_3" -> {
                 CvData cv3 = CvData.builder().user(user).template(CvTemplate.TEMPLATE_3).build();
                 cvDataRepository.save(cv3);
-                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Ağalı Ağa)");
+                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Jale Musayeva)");
                 userService.updateState(user, UserState.COLLECTING_FULL_NAME);
             }
             case "template_4" -> {
                 CvData cv4 = CvData.builder().user(user).template(CvTemplate.TEMPLATE_4).build();
                 cvDataRepository.save(cv4);
-                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Ağalı Ağa)");
+                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Jale Musayeva)");
                 userService.updateState(user, UserState.COLLECTING_FULL_NAME);
             }
             case "template_5" -> {
                 CvData cv5 = CvData.builder().user(user).template(CvTemplate.TEMPLATE_5).build();
                 cvDataRepository.save(cv5);
-                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Ağalı Ağa)");
+                sendText(chatId, "✅ Şablon seçildi!\n\nAdınızı və soyadınızı daxil edin:\n(məs: Jale Musayeva)");
                 userService.updateState(user, UserState.COLLECTING_FULL_NAME);
             }
             case "exp_yes" -> {
@@ -286,7 +286,7 @@ public class BotService {
         cvData.setProfession(text);
         cvData.setItProfession(isItProfession(text));
         cvDataRepository.save(cvData);
-        sendText(user.getChatId(), "Telefon nömrənizi daxil edin:\n(məs: +994 77 553 63 13)");
+        sendText(user.getChatId(), "Telefon nömrənizi daxil edin:\n(məs: +994 12 345 67 89)");
         userService.updateState(user, UserState.COLLECTING_PHONE);
     }
 
@@ -354,13 +354,13 @@ public class BotService {
 
     private void startExpCollection(User user) {
         tempExpData.put(user.getChatId(), new HashMap<>());
-        sendText(user.getChatId(), "İndi iş təcrübənizi toplayacağıq.\n\nİş yerinizin adını daxil edin:\n(məs: Gemza Group, Emerson MMC)");
+        sendText(user.getChatId(), "İndi iş təcrübənizi toplayacağıq.\n\nİş yerinizin adını daxil edin:\n(məs: Kapital Bank,Google)");
         userService.updateState(user, UserState.COLLECTING_EXP_COMPANY);
     }
 
     private void handleExpCompany(User user, String text) {
         tempExpData.computeIfAbsent(user.getChatId(), k -> new HashMap<>()).put("company", text);
-        sendText(user.getChatId(), "Vəzifənizi daxil edin:\n(məs: CNC Mütəxəssisi, Backend Developer)");
+        sendText(user.getChatId(), "Vəzifənizi daxil edin:\n(məs: Frontend Developer, Backend Developer)");
         userService.updateState(user, UserState.COLLECTING_EXP_POSITION);
     }
 
@@ -405,19 +405,19 @@ public class BotService {
 
     private void handleEduBachelorUniversity(User user, String text) {
         tempEduData.get(user.getChatId()).put("bachUniversity", text);
-        sendText(user.getChatId(), "Bakalavr ixtisasınızı daxil edin:\n(məs: Proseslərin avtomatlaşdırılması mühəndisliyi)");
+        sendText(user.getChatId(), "Bakalavr ixtisasınızı daxil edin:\n(məs: komputer muhendisliyi)");
         userService.updateState(user, UserState.COLLECTING_EDU_BACHELOR_FACULTY);
     }
 
     private void handleEduBachelorFaculty(User user, String text) {
         tempEduData.get(user.getChatId()).put("bachFaculty", text);
-        sendText(user.getChatId(), "Bakalavr başlama ilini daxil edin:\n(məs: 2019)");
+        sendText(user.getChatId(), "Bakalavr başlama ilini daxil edin:\n(məs: 2015)");
         userService.updateState(user, UserState.COLLECTING_EDU_BACHELOR_START);
     }
 
     private void handleEduBachelorStart(User user, String text) {
         tempEduData.get(user.getChatId()).put("bachStart", text);
-        sendText(user.getChatId(), "Bakalavr bitmə ilini daxil edin:\n(məs: 2023)");
+        sendText(user.getChatId(), "Bakalavr bitmə ilini daxil edin:\n(məs: 2019)");
         userService.updateState(user, UserState.COLLECTING_EDU_BACHELOR_END);
     }
 
