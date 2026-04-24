@@ -1,6 +1,7 @@
 package com.Aga.Agali.service;
 
 import com.Aga.Agali.entity.CvData;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -85,6 +86,10 @@ public class GeminiService {
                 """.formatted(position, duties);
 
         return callGemini(prompt, duties);
+    }
+    @PostConstruct
+    public void init() {
+        log.info("Gemini API Key: {}", apiKey != null ? apiKey.substring(0, 10) + "..." : "NULL");
     }
 
     private String callGemini(String prompt, String fallback) {
