@@ -1,4 +1,5 @@
 FROM node:20-slim AS node-base
+RUN npm install -g puppeteer@21.0.0 --ignore-scripts
 
 FROM eclipse-temurin:21-jdk-jammy
 
@@ -8,10 +9,12 @@ RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 WORKDIR /app
 
-COPY package.json ./
-RUN npm install
+COPY convert.js ./
+COPY pom.xml ./
+COPY src ./src
+COPY mvnw ./
+COPY .mvn ./.mvn
 
-COPY . .
 RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
 EXPOSE 8080
