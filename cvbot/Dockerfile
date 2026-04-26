@@ -1,18 +1,16 @@
-FROM node:20-slim AS node-base
-RUN npm install -g puppeteer@21.0.0
-
 FROM eclipse-temurin:21-jdk-jammy
 
-COPY --from=node-base /usr/local/bin/node /usr/local/bin/node
-COPY --from=node-base /usr/local/lib/node_modules /usr/local/lib/node_modules
-RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+RUN apt-get update && apt-get install -y \
+    nodejs \
+    npm \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY convert.js ./
 COPY package.json ./
-RUN npm install
+RUN npm install --omit=dev
 
+COPY convert.js ./
 COPY pom.xml ./
 COPY src ./src
 COPY mvnw ./
