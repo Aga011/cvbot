@@ -1,5 +1,8 @@
 [phases.setup]
-nixPkgs = ["nodejs_20", "maven", "jdk17"]
+nixPkgs = ["nodejs_20", "maven", "jdk17", "chromium", "nss", "alsa-lib", "at-spi2-core", "libdrm", "mesa", "xorg.libX11", "xorg.libXcomposite", "xorg.libXdamage", "xorg.libXext", "xorg.libXrandr"]
+
+[variables]
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
 
 [phases.install]
 cmds = ["npm install"]
