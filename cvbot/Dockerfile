@@ -1,7 +1,7 @@
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
-RUN chmod +x mvnw && ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 FROM node:20-bookworm-slim
 RUN apt-get update && apt-get install -y \
