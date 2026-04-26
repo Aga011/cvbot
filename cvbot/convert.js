@@ -6,7 +6,7 @@ const pdfPath = process.argv[3];
 (async () => {
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath: 'chromium',
+        executablePath: '/usr/bin/chromium',
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
