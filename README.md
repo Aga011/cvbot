@@ -37,4 +37,4 @@ PUPPETEER_SCRIPT_PATH=...
 
 ## 📱 İstifadə
 
-Telegram-da @cv_az_bot botunu tap və /start yaz.
+Telegram-da @cv_az_bot botunu tap və /start yazin.
