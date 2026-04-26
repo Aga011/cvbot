@@ -1,11 +1,11 @@
-FROM maven:3.9-eclipse-temurin-17 AS build
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
 FROM node:20-bookworm-slim
 RUN apt-get update && apt-get install -y \
-    default-jre-headless \
+    openjdk-21-jre-headless \
     chromium \
     fonts-freefont-ttf \
     --no-install-recommends \
