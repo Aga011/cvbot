@@ -35,3 +35,4 @@ build/
 # Sensitive files
 application-local.properties
 .env
+templates.cv
