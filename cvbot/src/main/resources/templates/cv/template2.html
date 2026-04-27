@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', Arial, sans-serif; width: 210mm; min-height: 297mm; background: white; color: #222; }
+
+        .container { padding: 35px 40px; }
+
+        .header { margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 20px; }
+
+        .full-name { font-size: 36px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; color: #1a1a1a; }
+        .full-name span { font-weight: 300; }
+
+        .profession { font-size: 14px; font-weight: 700; color: #54AFE4; text-decoration: underline; margin-bottom: 8px; }
+
+        .contact-line { font-size: 12px; color: #666; margin-bottom: 5px; }
+        .contact-line span { color: #999; font-weight: 300; }
+        .separator { display: inline-block; border-left: 1px solid #999; margin: 0 8px; height: 10px; vertical-align: middle; }
+
+        .about-text { font-size: 12px; color: #444; line-height: 1.7; margin-top: 10px; }
+        .bold-title { font-weight: 700; color: #1a1a1a; }
+        .italic-text { font-style: italic; color: #444; }
+
+        .section { margin-bottom: 30px; }
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #54AFE4;
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .exp-item { display: flex; gap: 20px; margin-bottom: 20px; }
+        .exp-item:last-child { margin-bottom: 0; }
+        .exp-left { width: 35%; flex-shrink: 0; }
+        .exp-right { flex: 1; }
+        .exp-company { font-size: 12px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+        .exp-date { font-size: 11px; color: #999; margin-bottom: 2px; }
+        .exp-position { font-size: 12px; font-weight: 700; color: #333; margin-bottom: 5px; }
+        .exp-duties { font-size: 11px; color: #555; line-height: 1.7; white-space: pre-wrap; }
+
+        .edu-item { display: flex; gap: 20px; margin-bottom: 16px; }
+        .edu-item:last-child { margin-bottom: 0; }
+        .edu-left { width: 35%; flex-shrink: 0; }
+        .edu-right { flex: 1; }
+        .edu-university { font-size: 12px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+        .edu-date { font-size: 11px; color: #999; margin-bottom: 2px; }
+        .edu-degree { font-size: 12px; font-weight: 700; color: #333; margin-bottom: 2px; }
+        .edu-faculty { font-size: 11px; color: #555; }
+
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag {
+            background: #f0f7ff;
+            color: #54AFE4;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 3px;
+            border: 1px solid #d0e8f8;
+        }
+
+        .lang-item { font-size: 12px; color: #444; margin-bottom: 5px; }
+
+        .project-item { margin-bottom: 14px; }
+        .project-name { font-size: 12px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+        .project-desc { font-size: 11px; color: #555; line-height: 1.6; }
+
+        .cert-item { font-size: 12px; color: #444; margin-bottom: 5px; }
+
+        .link-item { font-size: 12px; color: #54AFE4; margin-bottom: 4px; }
+
+        .two-col { display: flex; gap: 30px; }
+        .two-col > div { flex: 1; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="full-name">${firstNameHtml}</div>
+        <div class="profession">${profession}</div>
+        <div class="contact-line">
+            <span>Telefon:</span> ${phone}
+            <span class="separator"></span>
+            <span>Email:</span> ${email}
+            <span class="separator"></span>
+            ${address}
+            ${githubLineHtml}
+            ${linkedinLineHtml}
+        </div>
+        <div class="about-text">${about}</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">İş Təcrübəsi</div>
+        ${experienceHtml}
+    </div>
+
+    <div class="section">
+        <div class="section-title">Təhsil</div>
+        ${educationHtml}
+    </div>
+
+    ${projectsSectionHtml}
+
+    <div class="two-col">
+        <div class="section">
+            <div class="section-title">Bacarıqlar</div>
+            <div class="skills-grid">${skillsHtml}</div>
+        </div>
+        <div class="section">
+            <div class="section-title">Dil Bilikləri</div>
+            ${languagesHtml}
+        </div>
+    </div>
+
+    ${certificationsSectionHtml}
+    ${computerSkillsSectionHtml}
+    ${personalSkillsSectionHtml}
+</div>
+</body>
+</html>
